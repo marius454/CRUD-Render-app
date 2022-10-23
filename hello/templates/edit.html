@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class = "book-div">
+    <h3>Edit Book</h3>
+    <form method="POST" action="{% url 'hello:update' book.id %}">
+        {% csrf_token %}
+        <input type="text" value="{{book.author_name}}" placeholder="Author Name" name="author_name"><br>
+        <input type="text" value="{{book.book_name}}" placeholder="Book Name" name="book_name"><br>
+        <input type="number" value="{{book.price|floatformat:2}}" placeholder="Price" name="price" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)"><br>
+        <Label>Book release date:</Label><br>
+        <input type="date" value="{{book.release_date|date:'Y-m-d'}}" name="release_date"><br>
+        <Label>Is the book available?</Label>
+        <input type="checkbox" value="on" name="availability" {% if book.availability %} checked {% endif %}><br>
+        <input type="submit">
+    </form>
+</div>
+
+{% endblock %}

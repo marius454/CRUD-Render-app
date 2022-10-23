@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Python Heroku CRUD App</title>
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .jumbotron {
+        background: #532f8c;
+        color: white;
+        padding-bottom: 80px
+    }
+    .jumbotron .btn-primary {
+        background: #845ac7;
+        border-color: #845ac7
+    }
+    .jumbotron .btn-primary:hover {
+        background: #7646c1
+    }
+    .jumbotron p {
+        color: #d9ccee;
+        max-width: 75%;
+        margin: 1em auto 2em
+    }
+    .navbar+.jumbotron {
+        margin-top: -20px
+    }
+    .jumbotron .lang-logo {
+        display: block;
+        background: #b01302;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        border: 2px solid white
+    }
+    .jumbotron .lang-logo img {
+        max-width: 100%
+    }
+    .book-div {
+      /* width: 49.85%; */
+      width: 100%;
+      /* height: 250px; */
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+      /* border-left: solid; */
+      border-bottom: solid;
+      border-width: 1px;
+      border-color: black;
+    }
+    .book-div input {
+      margin-bottom: 5px;
+    }
+    .book-div table {
+      width: 100%;
+      border: solid;
+    }
+    .book-div thead {
+      font-weight: bold;
+    }
+    .book-div td {
+      border: solid;
+      border-width: 2px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <a href="/" class="lang-logo">
+        <img src="{% static 'lang-logo.png'%}">
+      </a>
+      <h1>Getting Started with Python on Heroku</h1>
+      <h3>This is a simple Python Book Store application deployed to Heroku.</p>
+      <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-python"><span class="glyphicon glyphicon-flash"></span> Getting Started with Python</a>
+    </div>
+  </div>
+
+{% block content %}{% endblock %}
+
+</body>
+<script>
+  function setTwoNumberDecimal(event) {
+    this.value = parseFloat(this.value).toFixed(2);
+  } 
+</script>
+</html>

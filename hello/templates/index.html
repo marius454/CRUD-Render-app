@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div>
+    <div class = "book-div">
+        <h3>Add New Book</h3>
+        <form method="POST" action="{% url 'hello:insert' %}">
+            {% csrf_token %}
+            <input type="text" value="" placeholder="Author Name" name="author_name"><br>
+            <input type="text" value="" placeholder="Book Name" name="book_name"><br>
+            <input type="number" value="" placeholder="Price" name="price" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)"><br>
+            <Label>Book release date:</Label><br>
+            <input type="date" name="release_date"><br>
+            <Label>Is the book available?</Label>
+            <input type="checkbox" value="on" name="availability" checked><br>
+            <input type="submit">
+        </form>
+    </div>
+
+    <div class = "book-div">
+      <h3>View Books</h3>
+      <table>
+        <thead>
+          <td>Author Name</td>
+          <td>Book Name</td>
+          <td>Price</td>
+          <td>Release Date</td>
+          <td>Availability</td>
+          <td colspan="2">Actions</td>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr>
+            <td>{{book.author_name}}</td>
+            <td>{{book.book_name}}</td>
+            <td>{{book.price|floatformat:2}}</td>
+            <td>{{book.release_date}}</td>
+            <td>{{book.availability}}</td>
+            <td><a href="{% url 'hello:edit' book.id %}">edit</a></td>
+            <td><a href="{% url 'hello:delete' book.id %}">delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}
